@@ -23,3 +23,4 @@ console.log('server is running!')
 //tu help va student co back quay lai trang home
 //hien thi anh nao do o trang home
 //trang home: co button ok, khi click vao do hien thi dong Hello World
+//https://www.tutorialsteacher.com/nodejs/expressjs
