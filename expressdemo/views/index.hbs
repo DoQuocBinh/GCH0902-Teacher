@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index page</title>
+</head>
+<body>
+    <h1>Index page</h1>
+    <h2>Welcome {{name}}</h2>
+   <table border="1" width="40%">
+       <tr>
+           <td>Name</td>
+           <td>Picture</td>
+       </tr>
+       {{#each ds}}
+       <tr>
+           <td>{{name}}</td>
+           <td><img src="{{picURL}}" width="150" height="100"/> </td>
+       </tr>
+       {{/each}}
+   </table>
+    <a href="/help">Go to help</a>
+    <br>
+    <a href="/new">New Product</a>
+    <hr>
+    {{ht}}
+</body>
+</html>
