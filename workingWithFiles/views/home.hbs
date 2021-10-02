@@ -11,7 +11,7 @@
     <a href="/new">New Product</a>
     <ul>
         {{#each product}}
-            <a href="/delete?id={{id}}">
+            <a href="/delete?id={{id}}" onclick="return confirm('Ban co muon xoa?')">
                 <li>{{id}} - {{name}} -- {{price}}</li>
             </a>
         {{/each}}
