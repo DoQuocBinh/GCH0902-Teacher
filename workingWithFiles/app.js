@@ -12,6 +12,23 @@ function appendProduct(id,name,price){
     const product = '\n' + id + ";" + name + ";" + price
     fs.appendFileSync(FILE_NAME,product)
 }
+function deleteProduct(id){
+    var products = fetchData();
+    const productLeft = products.filter(p=>p.id != id);
+
+    var fileContent = ''
+    productLeft.forEach(element => {
+        let product = element.id + ';' + element.name + ';' + element.price
+        fileContent += product + '\n'
+    });
+    fs.writeFileSync(FILE_NAME,fileContent.trim(),"utf-8");
+}
+
+app.get('/delete',(req,res)=>{
+    const id = req.query.id;
+    deleteProduct(id)
+    res.redirect('/')
+})
 
 app.post('/insert',(req,res)=>{
     const id = req.body.txtId
@@ -38,9 +55,14 @@ console.log("Running on port: ", PORT)
 
 function fetchData() {
     const data = fs.readFileSync(FILE_NAME, 'utf8')
+    if(data.trim().length== 0)
+        return [];
     const pros = data.split('\n')
     var products = []
-    pros.forEach(pro => {
+    for(i=0;i<pros.length;i++){
+        let pro = pros[i]
+        if(pro.trim().length==0)
+            continue;
         let productAtributes = pro.split(';')
         const product = {
             id: productAtributes[0],
@@ -48,6 +70,6 @@ function fetchData() {
             price: productAtributes[2]
         }
         products.push(product)
-    })
+    }
     return products
 }

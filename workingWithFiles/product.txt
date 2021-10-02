@@ -1,3 +1,14 @@
-1;Iphone;3200
-2;Samsung;3000
-3;samung tab s7;444
+
+1;aa;22
+
+
+
+
+
+
+
+
+
+
+
+2;ddd;3

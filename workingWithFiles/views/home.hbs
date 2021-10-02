@@ -11,7 +11,9 @@
     <a href="/new">New Product</a>
     <ul>
         {{#each product}}
-            <li>{{id}} - {{name}} -- {{price}}</li>
+            <a href="/delete?id={{id}}">
+                <li>{{id}} - {{name}} -- {{price}}</li>
+            </a>
         {{/each}}
     </ul>
 </body>
