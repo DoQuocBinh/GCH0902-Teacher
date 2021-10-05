@@ -36,3 +36,7 @@ db.blogs.insertMany([
 ]);
 
 db.blogs.find()
+//1. In toan bo cac title cua Blog
+//2. In toan bo cac title cua Blog: likes > 9
+//3. In toan bo cac message trong comment
+//4. In toan bo cac title, sort by likes
