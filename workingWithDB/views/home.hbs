@@ -26,7 +26,9 @@
         </tr>
         {{#each products}}
             <tr>
-                <td>{{_id}}</td>
+                <td>
+                    <a onclick="return confirm('Are your sure?')" href="/delete/{{_id}}"> {{_id}}</a>
+                </td>
                 <td>{{name}}</td>
                 <td>{{price}}</td>
             </tr>
