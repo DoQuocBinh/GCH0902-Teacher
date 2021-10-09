@@ -1,12 +1,13 @@
 const express = require('express')
-const { insertToDB } = require('./databaseHandler')
+const { insertToDB, getAll } = require('./databaseHandler')
 const app = express()
 
 app.set('view engine','hbs')
 app.use(express.urlencoded({extended:true}))
 
-app.get('/',(req,res)=>{
-    res.render('home')
+app.get('/',async (req,res)=>{
+    var result = await getAll("Products")
+    res.render('home',{products:result})
 })
 
 app.post('/insert',(req,res)=>{
