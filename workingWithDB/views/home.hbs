@@ -11,17 +11,25 @@
 
 <body>
     <h1>Home page</h1>
-    <form action="/insert" method="post">
-        Product Name: <input type="text" class="form-control" name="txtName">
-        <br>
-        Price <input type="text" name="txtPrice">
-        <br>
-        Picture URL
-        <input type="text" name="txtURL">
-        <span style="color: red;">{{picError}}</span>
-        <br>
-        <input type="submit" value="Insert">
-    </form>
+    <div style="width: 50%;">
+        <form action="/insert" method="post">
+            <div class="mb-3">
+                <label class="form-label" for="txtName"> Product Name</label>
+                <input type="text" class="form-control" name="txtName" id="txtName">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="txtPrice"> Price</label>
+                <input type="text" class="form-control" name="txtPrice" id="txtPrice">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="txtURL"> Picture</label>
+                <input type="text" class="form-control" name="txtURL" id="txtURL">
+                <span style="color: red;">{{picError}}</span>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Insert">
+        </form>
+    </div>
+
     <hr>
     <table border="1" width="50%">
         <tr>
@@ -32,17 +40,17 @@
             <td>Edit</td>
         </tr>
         {{#each products}}
-            <tr>
-                <td>
-                    <a onclick="return confirm('Are your sure?')" href="/delete/{{_id}}"> {{_id}}</a>
-                </td>
-                <td>{{name}}</td>
-                <td>{{price}}</td>
-                <Td><img src="{{picURL}}" width="120" height="100"/></Td>
-                <td>
-                    <a href="/edit/{{_id}}">Edit</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <a onclick="return confirm('Are your sure?')" href="/delete/{{_id}}"> {{_id}}</a>
+            </td>
+            <td>{{name}}</td>
+            <td>{{price}}</td>
+            <Td><img src="{{picURL}}" width="120" height="100" /></Td>
+            <td>
+                <a href="/edit/{{_id}}">Edit</a>
+            </td>
+        </tr>
         {{/each}}
     </table>
 
