@@ -23,6 +23,7 @@
             <td>id</td>
             <td>Name</td>
             <td>Price</td>
+            <td>Edit</td>
         </tr>
         {{#each products}}
             <tr>
@@ -31,6 +32,9 @@
                 </td>
                 <td>{{name}}</td>
                 <td>{{price}}</td>
+                <td>
+                    <a href="/edit/{{_id}}">Edit</a>
+                </td>
             </tr>
         {{/each}}
     </table>

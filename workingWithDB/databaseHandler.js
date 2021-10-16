@@ -3,6 +3,19 @@ const {MongoClient,ObjectId} = require('mongodb')
 const DATABASE_URL = 'mongodb://tommy:123456abc@cluster0-shard-00-00.lkrga.mongodb.net:27017,cluster0-shard-00-01.lkrga.mongodb.net:27017,cluster0-shard-00-02.lkrga.mongodb.net:27017/GCH0901_DB?replicaSet=Cluster0-shard-0&ssl=true&authSource=admin'
 const DATABASE_NAME = 'GCH0901_DB'
 
+async function updateDocument(id, updateValues,collectionName){
+    const client = await MongoClient.connect(DATABASE_URL);
+    const dbo = client.db(DATABASE_NAME);
+    await dbo.collection(collectionName).updateOne({_id:ObjectId(id)},updateValues)
+}
+
+async function getDocumentById(id,collectionName){
+    const client = await MongoClient.connect(DATABASE_URL);
+    const dbo = client.db(DATABASE_NAME);
+    const result = await dbo.collection(collectionName).findOne({_id:ObjectId(id)})
+    return result;
+}
+
 //vi du obj la thong tin van insert, collection: ten cua bang can insert-vd Products
 async function insertToDB(obj,collectionName){
     const client = await MongoClient.connect(DATABASE_URL);
@@ -24,5 +37,5 @@ async function deleteObject(id,collectionName){
     dbo.collection(collectionName).deleteOne({_id:ObjectId(id)})
 }
 
-module.exports = {insertToDB,getAll,deleteObject}
+module.exports = {insertToDB,getAll,deleteObject,getDocumentById,updateDocument}
 
