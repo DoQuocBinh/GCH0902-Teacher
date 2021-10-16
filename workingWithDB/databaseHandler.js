@@ -35,7 +35,7 @@ async function getAll(collectionName){
 
 async function deleteObject(id,collectionName){
     const dbo = await getDatabase()
-    dbo.collection(collectionName).deleteOne({_id:ObjectId(id)})
+    await dbo.collection(collectionName).deleteOne({_id:ObjectId(id)})
 }
 
 module.exports = {insertToDB,getAll,deleteObject,getDocumentById,updateDocument}

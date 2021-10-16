@@ -5,15 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <title>Home page</title>
 </head>
 
 <body>
     <h1>Home page</h1>
     <form action="/insert" method="post">
-        Product Name: <input type="text" name="txtName">
+        Product Name: <input type="text" class="form-control" name="txtName">
         <br>
         Price <input type="text" name="txtPrice">
+        <br>
+        Picture URL
+        <input type="text" name="txtURL">
+        <span style="color: red;">{{picError}}</span>
         <br>
         <input type="submit" value="Insert">
     </form>
@@ -23,6 +28,7 @@
             <td>id</td>
             <td>Name</td>
             <td>Price</td>
+            <Td>Picture</Td>
             <td>Edit</td>
         </tr>
         {{#each products}}
@@ -32,6 +38,7 @@
                 </td>
                 <td>{{name}}</td>
                 <td>{{price}}</td>
+                <Td><img src="{{picURL}}" width="120" height="100"/></Td>
                 <td>
                     <a href="/edit/{{_id}}">Edit</a>
                 </td>
